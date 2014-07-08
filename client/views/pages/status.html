@@ -1,0 +1,21 @@
+<h1 style="width: 100%; margin-bottom: 40px;">
+  System status
+
+  <form class="form-inline" role="form" style="float: right;">
+    <div class="form-group">
+      <select class="form-control" style="width: 300px;" data-bind="value: selected, disable: loading, foreach: programs">
+          <option value="" data-bind="text: $data.name, attr: { value: $data.id }"></option>
+        </select>
+    </div>
+  </form>
+</h1>
+
+<form class="form" role="form" style="padding-bottom: 20px;">
+  <div class="form-group">
+    <div class="btn-group" data-bind="foreach: valves" style="width: 100%;">
+      <button type="button" class="btn btn-sm btn-success" data-bind="html: $data.name + '<br>' + $data.id, style: { width: (100 / $parent.valves().length) + '%' }, css: { 'btn-success': $data.state(), active: $data.state(), 'btn-danger': !$data.state() }, click: $parent.valveHandler, disable: $root.loading"></button>
+    </div>
+  </div>
+</form>
+
+<div data-bind="template: { name: 'scheme', data: $root }"></div>

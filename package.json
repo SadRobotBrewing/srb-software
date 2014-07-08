@@ -1,0 +1,22 @@
+{
+  "name"         : "SRB-Software",
+  "version"      : "0.0.1",
+  "description"  : "",
+  "author"       : "Mattias Runge <mattias@runge.se>",
+  "repository"   : {
+    "type" : "git",
+    "url"  : "git://github.com/mattiasrunge/srb-software.git"
+  },
+  "engines"      : {
+    "node": ">= 0.8.0"
+  },
+  "license"      : "GPLv2",
+  "dependencies" : {
+    "bower"             : ">= 1.3.3",
+    "express"           : ">= 3.x",
+    "primus"            : ">= 2.2.1",
+    "ws"                : ">= 0.4.31",
+    "primus-responder"  : ">= 1.0.2",
+    "phidget"           : ">= 0.1.0"
+  }
+}

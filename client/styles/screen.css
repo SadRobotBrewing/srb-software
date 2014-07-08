@@ -1,0 +1,370 @@
+
+.scheme {
+  position: relative;
+  height: 700px;
+  width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scheme div {
+  position: absolute;
+}
+
+.scheme .tank {
+  border: 1px solid #8F8F8F;
+  border-radius: 20px;
+}
+
+.scheme .tank .title {
+  position: relative;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.scheme .on {
+  background-color: #5CB85C;
+}
+
+.scheme .off {
+  background-color: #D9534F;
+}
+
+.scheme .valve {
+  border-radius: 5px;
+  border: 1px solid #8F8F8F;
+  width: 50px;
+  height: 50px;
+}
+
+.scheme .hValve {
+  margin-top: -25px;
+}
+
+.scheme .vValve {
+  margin-left: -25px;
+}
+
+
+.scheme .port {
+  border-radius: 25px;
+  border: 1px solid #8F8F8F;
+  width: 50px;
+  height: 50px;
+}
+
+.scheme .hPort {
+  margin-top: -25px;
+}
+
+.scheme .vPort {
+  margin-left: -25px;
+}
+
+.scheme .valve .title, .scheme .port .title {
+  position: relative;
+  padding: 5px;
+  padding-top: 13px;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+.scheme .pipe {
+  background-color: #8F8F8F;
+}
+
+.scheme .hPipe {
+  height: 10px;
+  margin-top: -5px;
+}
+
+.scheme .vPipe {
+  width: 10px;
+  margin-left: -5px;
+}
+
+.scheme .cornerPipe {
+  height: 10px;
+  margin-top: -5px;
+  width: 10px;
+  margin-left: -5px;
+}
+
+.scheme .vBridgePipe {
+  height: 10px;
+  margin-top: -5px;
+  width: 12px;
+  margin-left: -6px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+
+.scheme .vSpan1 {
+  width: 50px;
+}
+
+.scheme .vSpan2 {
+  width: 100px;
+}
+
+.scheme .vSpan3 {
+  width: 150px;
+}
+
+.scheme .vSpan4 {
+  width: 200px;
+}
+
+.scheme .vSpan5 {
+  width: 250px;
+}
+
+.scheme .vSpan6 {
+  width: 300px;
+}
+
+.scheme .vSpan7 {
+  width: 350px;
+}
+
+.scheme .vSpan8 {
+  width: 400px;
+}
+
+.scheme .vSpan9 {
+  width: 450px;
+}
+
+.scheme .vSpan10 {
+  width: 500px;
+}
+
+.scheme .vSpan11 {
+  width: 550px;
+}
+
+.scheme .vSpan12 {
+  width: 600px;
+}
+
+.scheme .vSpan13 {
+  width: 650px;
+}
+
+.scheme .vSpan14 {
+  width: 700px;
+}
+
+.scheme .vSpan15 {
+  width: 750px;
+}
+
+.scheme .vSpan16 {
+  width: 800px;
+}
+
+.scheme .vSpan17 {
+  width: 850px;
+}
+
+.scheme .vSpan18 {
+  width: 900px;
+}
+
+.scheme .vSpan19 {
+  width: 950px;
+}
+
+.scheme .vSpan20 {
+  width: 1000px;
+}
+
+
+.scheme .hSpan1 {
+  height: 50px;
+}
+
+.scheme .hSpan2 {
+  height: 100px;
+}
+
+.scheme .hSpan3 {
+  height: 150px;
+}
+
+.scheme .hSpan4 {
+  height: 200px;
+}
+
+.scheme .hSpan5 {
+  height: 250px;
+}
+
+.scheme .hSpan6 {
+  height: 300px;
+}
+
+.scheme .hSpan7 {
+  height: 350px;
+}
+
+.scheme .hSpan8 {
+  height: 400px;
+}
+
+.scheme .hSpan9 {
+  height: 450px;
+}
+
+.scheme .hSpan10 {
+  height: 500px;
+}
+
+
+
+.scheme .col1 {
+  left: 0;
+}
+
+.scheme .col2 {
+  left: 50px;
+}
+
+.scheme .col3 {
+  left: 100px;
+}
+
+.scheme .col4 {
+  left: 150px;
+}
+
+.scheme .col5 {
+  left: 200px;
+}
+
+.scheme .col6 {
+  left: 250px;
+}
+
+.scheme .col7 {
+  left: 300px;
+}
+
+.scheme .col8 {
+  left: 350px;
+}
+
+.scheme .col9 {
+  left: 400px;
+}
+
+.scheme .col10 {
+  left: 450px;
+}
+
+.scheme .col11 {
+  left: 500px;
+}
+
+.scheme .col12 {
+  left: 550px;
+}
+
+.scheme .col13 {
+  left: 600px;
+}
+
+.scheme .col14 {
+  left: 650px;
+}
+
+.scheme .col15 {
+  left: 700px;
+}
+
+.scheme .col16 {
+  left: 750px;
+}
+
+.scheme .col17 {
+  left: 800px;
+}
+
+.scheme .col18 {
+  left: 850px;
+}
+
+.scheme .col19 {
+  left: 900px;
+}
+
+.scheme .col20 {
+  left: 950px;
+}
+
+.scheme .col21 {
+  left: 1000px;
+}
+
+.scheme .row1 {
+  top: 0;
+}
+
+.scheme .row2 {
+  top: 50px;
+}
+
+.scheme .row3 {
+  top: 100px;
+}
+
+.scheme .row4 {
+  top: 150px;
+}
+
+.scheme .row5 {
+  top: 200px;
+}
+
+.scheme .row6 {
+  top: 250px;
+}
+
+.scheme .row7 {
+  top: 300px;
+}
+
+.scheme .row8 {
+  top: 350px;
+}
+
+.scheme .row9 {
+  top: 400px;
+}
+
+.scheme .row10 {
+  top: 450px;
+}
+
+.scheme .row11 {
+  top: 500px;
+}
+
+.scheme .row12 {
+  top: 550px;
+}
+
+.scheme .row13 {
+  top: 600px;
+}
+
+.scheme .row14 {
+  top: 650px;
+}
