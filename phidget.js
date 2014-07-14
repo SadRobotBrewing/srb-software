@@ -1,5 +1,5 @@
 
-var phidget = require('phidget-interafacekit');
+var phidget = require('phidget-interfacekit');
 
 module.exports = function() {
   var relays = [
