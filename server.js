@@ -19,7 +19,12 @@ server.listen(port, function() {
   console.log("Now listening on " + port);
 });
 
-phidget.connect(function() {
+phidget.connect(function(error) {
+  if (error) {
+    console.error("Could not connect to phidget board, error: " + error);
+    process.exit(255);
+  }
+  
   console.log('Connected to phidget board!');
 });
 

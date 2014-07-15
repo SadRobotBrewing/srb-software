@@ -56,7 +56,6 @@ module.exports = function() {
       console.log("Device Input Count: " + phidget.getInputCount());
       console.log("Device Output Count: " + phidget.getOutputCount());
       console.log("Device Sensor Count: " + phidget.getSensorCount());
-      console.log("Device Ratiometric: " + phidget.getRatiometric());
       
       callback();
     } catch (e) {
