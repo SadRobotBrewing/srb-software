@@ -13,7 +13,7 @@
 
 .scheme .tank {
   border: 1px solid #8F8F8F;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .scheme .tank .title {
@@ -25,6 +25,7 @@
   font-size: 20px;
   text-shadow: 1px 1px 1px black;
 }
+
 
 .scheme .on {
   background-color: #5CB85C;
@@ -79,6 +80,10 @@
   background-color: #8F8F8F;
 }
 
+.scheme .innerPipe {
+  background-color: #5A5A5A;
+}
+
 .scheme .hPipe {
   height: 10px;
   margin-top: -5px;
@@ -94,6 +99,7 @@
   margin-top: -5px;
   width: 10px;
   margin-left: -5px;
+  border-radius: 5px;
 }
 
 .scheme .vBridgePipe {

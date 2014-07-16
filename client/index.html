@@ -19,24 +19,26 @@
     <script type="text/html" id="scheme">
       <div class="scheme">
         <div class="tank col2 row1 vSpan4 hSpan5" style="background-color: #4F81BD;"><div class="title">HLT</div></div>
-        <div class="tank col10 row1 vSpan4 hSpan5" style="background-color: #9BBB59;"><div class="title">MLT</div></div>
-        <div class="tank col16 row1 vSpan4 hSpan5" style="background-color: #F89646;"><div class="title">KET</div></div>
-        <div class="tank col17 row10 vSpan2 hSpan1" style="background-color: #4BACC7;"><div class="title">ACK</div></div>
+        <div class="tank col9 row1 vSpan4 hSpan5" style="background-color: #9BBB59;"><div class="title">MLT</div></div>
+        <div class="tank col15 row1 vSpan4 hSpan5" style="background-color: #F89646;"><div class="title">KET</div></div>
+        <div class="tank col13 row7 vSpan2 hSpan2" style="background-color: #4BACC7;"><div class="title">ACK</div></div>
 
-        <div class="valve col7 row2 hValve valve01" data-bind="css: { on: valves()[0].state(), off: !valves()[0].state() }"><div class="title">V01</div></div>
-        <div class="valve col9 row3 vValve valve02" data-bind="css: { on: valves()[1].state(), off: !valves()[1].state() }"><div class="title">V02</div></div>
-        <div class="valve col7 row5 hValve valve03" data-bind="css: { on: valves()[2].state(), off: !valves()[2].state() }"><div class="title">V03</div></div>
-        <div class="valve col4 row7 vValve valve04" data-bind="css: { on: valves()[3].state(), off: !valves()[3].state() }"><div class="title">V04</div></div>
-        <div class="valve col12 row7 vValve valve05" data-bind="css: { on: valves()[4].state(), off: !valves()[4].state() }"><div class="title">V05</div></div>
-        <div class="valve col18 row7 vValve valve06" data-bind="css: { on: valves()[5].state(), off: !valves()[5].state() }"><div class="title">V06</div></div>
+        <div class="valve col6 row2 hValve valve01" data-bind="css: { on: valves()[0].state(), off: !valves()[0].state() }"><div class="title">V01</div></div>
+        <div class="valve col8 row3 vValve valve02" data-bind="css: { on: valves()[1].state(), off: !valves()[1].state() }"><div class="title">V02</div></div>
+        <div class="valve col6 row5 hValve valve03" data-bind="css: { on: valves()[2].state(), off: !valves()[2].state() }"><div class="title">V03</div></div>
+        <div class="valve col4 row6 vValve valve04" data-bind="css: { on: valves()[3].state(), off: !valves()[3].state() }"><div class="title">V04</div></div>
+        <div class="valve col11 row6 vValve valve05" data-bind="css: { on: valves()[4].state(), off: !valves()[4].state() }"><div class="title">V05</div></div>
+        <div class="valve col17 row6 vValve valve06" data-bind="css: { on: valves()[5].state(), off: !valves()[5].state() }"><div class="title">V06</div></div>
         <div class="valve col2 row12 hValve valve07" data-bind="css: { on: valves()[6].state(), off: !valves()[6].state() }"><div class="title">V07</div></div>
         <div class="valve col5 row12 hValve valve08" data-bind="css: { on: valves()[7].state(), off: !valves()[7].state() }"><div class="title">V08</div></div>
-        <div class="valve col11 row12 hValve valve09" data-bind="css: { on: valves()[8].state(), off: !valves()[8].state() }"><div class="title">V09</div></div>
-        <div class="valve col15 row10 vValve valve10" data-bind="css: { on: valves()[9].state(), off: !valves()[9].state() }"><div class="title">V10</div></div>
-        <div class="valve col15 row13 vValve valve11" data-bind="css: { on: valves()[10].state(), off: !valves()[10].state() }"><div class="title">V11</div></div>
+        <div class="valve col12 row12 hValve valve09" data-bind="css: { on: valves()[8].state(), off: !valves()[8].state() }"><div class="title">V09</div></div>
+        
+        <div class="valve col15 row12 hValve valve10" data-bind="css: { on: valves()[9].state(), off: !valves()[9].state() }"><div class="title">V10</div></div>
+        
+        <div class="valve col14 row13 vValve valve11" data-bind="css: { on: valves()[10].state(), off: !valves()[10].state() }"><div class="title">V11</div></div>
 
         <div class="port col4 row10 vPort port1" data-bind="css: { on: valves()[11].state(), off: !valves()[11].state() }"><div class="title">P1</div></div>
-        <div class="port col16 row12 hPort port2" data-bind="css: { on: valves()[12].state(), off: !valves()[12].state() }"><div class="title">P2</div></div>
+        <div class="port col14 row10 vPort port2" data-bind="css: { on: valves()[12].state(), off: !valves()[12].state() }"><div class="title">P2</div></div>
 
 
         <div class="pipe hPipe col1 row2 vSpan1 pipeA"></div>
@@ -45,46 +47,48 @@
         <div class="pipe cornerPipe col1 row2 pipeA"></div>
         <div class="pipe cornerPipe col1 row12 pipeA"></div>
 
-        <div class="pipe vPipe col4 row6 hSpan1 pipeB"></div>
 
-        <div class="pipe vPipe col4 row8 hSpan2 pipeC"></div>
+        <div class="pipe innerPipe hPipe col5 row2 vSpan1 pipeB"></div>
+        <div class="pipe innerPipe vPipe col5 row2 hSpan3 pipeB"></div>
+        <div class="pipe innerPipe hPipe col5 row5 vSpan1 pipeB"></div>
+        <div class="pipe innerPipe cornerPipe col5 row2 pipeB"></div>
+        <div class="pipe innerPipe cornerPipe col5 row5 pipeB"></div>
+        
+        <div class="pipe vPipe col4 row7 hSpan3 pipeC"></div>
 
         <div class="pipe vPipe col4 row11 hSpan1 pipeD"></div>
         <div class="pipe hPipe col3 row12 vSpan2 pipeD"></div>
 
-        <div class="pipe hPipe col6 row2 vSpan1 pipeE"></div>
+        <div class="pipe hPipe col7 row2 vSpan2 pipeG"></div>
+        <div class="pipe vPipe col8 row2 hSpan1 pipeG"></div>
 
-        <div class="pipe hPipe col6 row5 vSpan1 pipeF"></div>
+        <div class="pipe hPipe col7 row5 vSpan1 pipeH"></div>
+        <div class="pipe vPipe col8 row4 hSpan8 pipeH"></div>
+        <div class="pipe hPipe col6 row12 vSpan6 pipeH"></div>
 
-        <div class="pipe hPipe col8 row2 vSpan2 pipeG"></div>
-        <div class="pipe vPipe col9 row2 hSpan1 pipeG"></div>
 
-        <div class="pipe hPipe col8 row5 vSpan1 pipeH"></div>
-        <div class="pipe vPipe col9 row4 hSpan8 pipeH"></div>
-        <div class="pipe hPipe col6 row12 vSpan5 pipeH"></div>
+        <div class="pipe vPipe col11 row7 hSpan1 pipeU"></div>
+        <div class="pipe hPipe col11 row8 vSpan2 pipeU"></div>
+        <div class="pipe cornerPipe col11 row8 pipeU"></div>
+        
+        <div class="pipe vPipe col17 row7 hSpan1 pipeI"></div>
+        <div class="pipe hPipe col15 row8 vSpan2 pipeI"></div>
+        <div class="pipe cornerPipe col17 row8 pipeI"></div>
+        
+        <div class="pipe vPipe col14 row9 hSpan1 pipeJ"></div>
+        
+        
+        <div class="pipe hPipe col19 row2 vSpan1 pipeM"></div>
+        <div class="pipe vPipe col20 row2 hSpan10 pipeM"></div>
+        <div class="pipe hPipe col16 row12 vSpan4 pipeM"></div>
+        <div class="pipe cornerPipe col20 row12 pipeM"></div>
+        <div class="pipe cornerPipe col20 row2 pipeM"></div>
+        
 
-        <div class="pipe vPipe col12 row6 hSpan1 pipeI"></div>
-
-        <div class="pipe vPipe col12 row8 hSpan1 pipeU"></div>
-        <div class="pipe hPipe col12 row9 vSpan6 pipeU"></div>
-        <div class="pipe vPipe col18 row8 hSpan1 pipeU"></div>
-        <div class="pipe vPipe col18 row9 hSpan1 pipeU"></div>
-        <div class="pipe cornerPipe col12 row9 pipeU"></div>
-
-        <div class="pipe hPipe col15 row2 vSpan1 pipeM"></div>
-        <div class="pipe vPipe col15 row2 hSpan8 pipeM"></div>
-        <div class="pipe cornerPipe col15 row2 pipeM"></div>
-        <div class="pipe vBridgePipe col15 row9 pipeM"></div>
-
-        <div class="pipe vPipe col18 row6 hSpan1 pipeN"></div>
-
-        <div class="pipe vPipe col15 row11 hSpan1 pipeK"></div>
-        <div class="pipe hPipe col12 row12 vSpan4 pipeK"></div>
-        <div class="pipe vPipe col15 row12 hSpan1 pipeK"></div>
-
-        <div class="pipe vPipe col18 row11 hSpan1 pipeL"></div>
-        <div class="pipe hPipe col17 row12 vSpan1 pipeL"></div>
-        <div class="pipe cornerPipe col18 row12 pipeL"></div>
+        <div class="pipe vPipe col14 row11 hSpan1 pipeK"></div>
+        <div class="pipe hPipe col13 row12 vSpan2 pipeK"></div>
+        <div class="pipe vPipe col14 row12 hSpan1 pipeK"></div>
+        
       </div>
     </script>
 
