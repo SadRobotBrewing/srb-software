@@ -107,12 +107,10 @@ define([
     valveHandler: function(valve) {
       var state = "";
       
-      if (valve.state() === "") {
-        state = "on";
-      } else if (valve.state() === "on") {
+      if (valve.state() === "on") {
         state = "off";
-      } else if (valve.state() === "off") {
-        state = "";
+      } else {
+        state = "on";
       }
       
       setValves([ { id: valve.id, state: state } ]);
