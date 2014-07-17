@@ -161,6 +161,15 @@ define([
       }
       
       console.log(selectedCategory());
+    },
+    stop: function() {
+      var list = [];
+      
+      for (var n = 0; n < valves().length; n++) {
+       list.push({ id: valves()[n].id === id, state: "off" });
+      }
+      
+      setValves(list);
     }
   };
   
