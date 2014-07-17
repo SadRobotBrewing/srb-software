@@ -100,7 +100,9 @@ primus.on('connection', function(spark) {
     } else if (data.event === "setValves") {
       console.log(data);
       phidget.setValves(data.data);
-      done({ });
+      setTimeout(function() {
+        done({ });
+      }, 500);
     } else if (data.event === "getValves") {
       done({ data: phidget.getValves() });
     } else {
