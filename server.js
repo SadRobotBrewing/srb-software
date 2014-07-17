@@ -102,7 +102,7 @@ primus.on('connection', function(spark) {
       phidget.setValves(data.data);
       setTimeout(function() {
         done({ });
-      }, 500);
+      }, 100);
     } else if (data.event === "getValves") {
       done({ data: phidget.getValves() });
     } else {
