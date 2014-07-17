@@ -28,6 +28,7 @@ phidget.connect(function(error) {
   console.log('Connected to phidget board!');
 });
 
+var categories = JSON.parse(fs.readFileSync('categories.json'));
 var programs = JSON.parse(fs.readFileSync('programs.json'));
 
 // TODO: Remove this when list is tri-state
@@ -94,6 +95,8 @@ primus.on('connection', function(spark) {
       }
     } else if (data.event === "loadPrograms") {
       done({ data: programs });
+    } else if (data.event === "loadCategories") {
+      done({ data: categories });
     } else if (data.event === "setValves") {
       console.log(data);
       phidget.setValves(data.data);

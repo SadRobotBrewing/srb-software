@@ -7,6 +7,14 @@ define([
   var errorText = ko.observable("");
   var valves = ko.observableArray();
   var programs = ko.observableArray();
+  var categories = ko.observableArray();
+  var selectedCategory = ko.observable();
+  var visiblePrograms = ko.computed(function() {
+    return programs().filter(function(element) {
+      element.categories = element.categories || [];
+      return element.categories.indexOf(selectedCategory()) !== -1;
+    });
+  });
   
   function getValveState(id) {
     for (var n = 0; n < valves().length; n++) {
@@ -73,6 +81,24 @@ define([
     });
   }
   
+  function getCatagories() {
+    loading(true);
+    errorText("");
+
+    server.send("loadCategories", {}, function(error, categoryList) {
+      loading(false);
+
+      if (error) {
+        errorText(error);
+        return;
+      }
+      
+      console.log("loadCategories", categoryList);
+
+      categories(categoryList);
+    });
+  }
+  
   function getPrograms() {
     loading(true);
     errorText("");
@@ -98,9 +124,13 @@ define([
     valves: valves,
     selected: selected,
     programs: programs,
+    categories: categories,
+    selectedCategory: selectedCategory,
+    visiblePrograms: visiblePrograms,
     load: function(id) {
       observer.publish("page", "status");
       
+      getCatagories();
       getPrograms();
       getValves();
     },
@@ -122,6 +152,15 @@ define([
       });
       
       setValves(list);
+    },
+    selectCategory: function(category) {
+      if (selectedCategory() === category) {
+        selectedCategory("");
+      } else {
+        selectedCategory(category);
+      }
+      
+      console.log(selectedCategory());
     }
   };
   

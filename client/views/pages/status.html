@@ -1,10 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-8">
+    <div class="col-md-8">
       <div data-bind="template: { name: 'scheme', data: $root }"></div>
     </div>
-    <div class="col-xs-6 col-md-4">
-      <div data-bind="template: { name: 'programs', data: $root }"></div>
+    <div class="col-md-4">
+      <div class="panel-group" id="accordion" data-bind="foreach: categories">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#" data-bind="text: $data, click: $root.selectCategory"></a>
+            </h4>
+          </div>
+          <ul class="list-group panel-collapse collapse" data-bind="foreach: $root.visiblePrograms, css: { 'in': $root.selectedCategory() === $data }">
+            <li class="list-group-item" data-bind="css: { 'list-group-item-success' : $root.selected().indexOf($data) !== -1 }, text: $data.name, click: $root.selectProgram" style="cursor: pointer;"></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

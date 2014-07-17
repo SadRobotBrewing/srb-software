@@ -7,8 +7,18 @@ define([
   var errorText = ko.observable("");
   var valves = ko.observableArray();
   var programs = ko.observableArray();
+  var categories = ko.observableArray();
   var selected = ko.observableArray();
   var newProgramName = ko.observable("");
+  var selectedCategories = ko.computed(function() {
+    if (selected().length > 0) {
+      console.log("selectedCategories", selected()[0].categories);
+      return selected()[0].categories || [];
+    }
+    
+    return [];
+  });
+  
   
   function getValves() {
     loading(true);
@@ -48,6 +58,24 @@ define([
     });
   }
   
+  function getCatagories() {
+    loading(true);
+    errorText("");
+
+    server.send("loadCategories", {}, function(error, categoryList) {
+      loading(false);
+
+      if (error) {
+        errorText(error);
+        return;
+      }
+      
+      console.log("loadCategories", categoryList);
+
+      categories(categoryList);
+    });
+  }
+  
   function saveProgram() {
     loading(true);
     errorText("");
@@ -68,6 +96,8 @@ define([
         errorText(error);
         return;
       }
+      
+      selected([ program ]);
     });
   }
 
@@ -78,10 +108,13 @@ define([
     valves: valves,
     selected: selected,
     programs: programs,
+    categories: categories,
+    selectedCategories: selectedCategories,
     newProgramName: newProgramName,
     load: function() {
       observer.publish("page", "programs");
       
+      getCatagories();
       getPrograms();
       getValves();
     },
@@ -94,6 +127,24 @@ define([
         valve.state("off");
       } else if (valve.state() === "off") {
         valve.state("");
+      }
+      
+      saveProgram();
+    },
+    categoryHandler: function(data) {
+      if (selected().length === 0) {
+        return false;
+      }
+      
+      selected()[0].categories = selected()[0].categories || [];
+      var pos = selected()[0].categories.indexOf(data);
+      
+      console.log(data, selected()[0].categories, pos);
+      
+      if (pos === -1) {
+        selected()[0].categories.push(data);
+      } else {
+        selected()[0].categories.splice(pos, 1);
       }
       
       saveProgram();

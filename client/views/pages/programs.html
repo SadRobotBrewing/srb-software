@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col-xs-12 col-md-8">
       <div data-bind="template: { name: 'scheme', data: $root }"></div>
+      
+      <div data-bind="foreach: categories" style="text-align: center;">
+        <label class="checkbox-inline">
+          <input type="checkbox" value="" data-bind="checked: $root.selectedCategories().indexOf($data) !== -1, click: $root.categoryHandler"> <span data-bind="text: $data"></span>
+        </label>
+      </div>
     </div>
     <div class="col-xs-6 col-md-4">
       <form class="form-inline" role="form" data-bind="submit: addProgram" style="margin-bottom: 20px;">
