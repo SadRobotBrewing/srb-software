@@ -55,6 +55,12 @@ define([
       console.log("programList", programList);
 
       programs(programList);
+      
+      if (selected().length > 0) {
+        selected(programList.filter(function(element) {
+          return element.id === selected()[0].id;
+        }));
+      }
     });
   }
   
@@ -98,6 +104,7 @@ define([
       }
       
       selected([ program ]);
+      getPrograms();
     });
   }
 
