@@ -166,7 +166,7 @@ define([
       var list = [];
       
       for (var n = 0; n < valves().length; n++) {
-       list.push({ id: valves()[n].id === id, state: "off" });
+       list.push({ id: valves()[n].id, state: "off" });
       }
       
       setValves(list);
