@@ -15,30 +15,34 @@
         loading&hellip;
       </div>
     </div>
-
+    
+    <script type="text/html" id="programs">
+      <ul class="list-group" data-bind="foreach: programs">
+        <li class="list-group-item" data-bind="css: { 'list-group-item-success' : $root.selected().indexOf($data) !== -1 }, text: $data.name, click: $root.selectProgram" style="cursor: pointer;"></li>
+      </ul>
+    </script>
+  
     <script type="text/html" id="scheme">
-      <div class="scheme">
+      <div class="scheme" data-bind="if: valves().length >= 11">
         <div class="tank col2 row1 vSpan4 hSpan5" style="background-color: #4F81BD;"><div class="title">HLT</div></div>
         <div class="tank col9 row1 vSpan4 hSpan5" style="background-color: #9BBB59;"><div class="title">MLT</div></div>
         <div class="tank col15 row1 vSpan4 hSpan5" style="background-color: #F89646;"><div class="title">KET</div></div>
         <div class="tank col13 row7 vSpan2 hSpan2" style="background-color: #4BACC7;"><div class="title">ACK</div></div>
 
-        <div class="valve col6 row2 hValve valve01" data-bind="css: { on: valves()[0].state(), off: !valves()[0].state() }"><div class="title">V01</div></div>
-        <div class="valve col8 row3 vValve valve02" data-bind="css: { on: valves()[1].state(), off: !valves()[1].state() }"><div class="title">V02</div></div>
-        <div class="valve col6 row5 hValve valve03" data-bind="css: { on: valves()[2].state(), off: !valves()[2].state() }"><div class="title">V03</div></div>
-        <div class="valve col4 row6 vValve valve04" data-bind="css: { on: valves()[3].state(), off: !valves()[3].state() }"><div class="title">V04</div></div>
-        <div class="valve col11 row6 vValve valve05" data-bind="css: { on: valves()[4].state(), off: !valves()[4].state() }"><div class="title">V05</div></div>
-        <div class="valve col17 row6 vValve valve06" data-bind="css: { on: valves()[5].state(), off: !valves()[5].state() }"><div class="title">V06</div></div>
-        <div class="valve col2 row12 hValve valve07" data-bind="css: { on: valves()[6].state(), off: !valves()[6].state() }"><div class="title">V07</div></div>
-        <div class="valve col5 row12 hValve valve08" data-bind="css: { on: valves()[7].state(), off: !valves()[7].state() }"><div class="title">V08</div></div>
-        <div class="valve col12 row12 hValve valve09" data-bind="css: { on: valves()[8].state(), off: !valves()[8].state() }"><div class="title">V09</div></div>
-        
-        <div class="valve col15 row12 hValve valve10" data-bind="css: { on: valves()[9].state(), off: !valves()[9].state() }"><div class="title">V10</div></div>
-        
-        <div class="valve col14 row13 vValve valve11" data-bind="css: { on: valves()[10].state(), off: !valves()[10].state() }"><div class="title">V11</div></div>
+        <div class="valve col6 row2 hValve valve01" data-bind="css: { on: valves()[0].state() === 'on', off: valves()[0].state() === 'off' }, click: valveHandler.bind($data, valves()[0])"><div class="title">V01</div></div>
+        <div class="valve col8 row3 vValve valve02" data-bind="css: { on: valves()[1].state() === 'on', off: valves()[1].state() === 'off' }, click: valveHandler.bind($data, valves()[1])"><div class="title">V02</div></div>
+        <div class="valve col6 row5 hValve valve03" data-bind="css: { on: valves()[2].state() === 'on', off: valves()[2].state() === 'off' }, click: valveHandler.bind($data, valves()[2])"><div class="title">V03</div></div>
+        <div class="valve col4 row6 vValve valve04" data-bind="css: { on: valves()[3].state() === 'on', off: valves()[3].state() === 'off' }, click: valveHandler.bind($data, valves()[3])"><div class="title">V04</div></div>
+        <div class="valve col11 row6 vValve valve05" data-bind="css: { on: valves()[4].state() === 'on', off: valves()[4].state() === 'off' }, click: valveHandler.bind($data, valves()[4])"><div class="title">V05</div></div>
+        <div class="valve col17 row6 vValve valve06" data-bind="css: { on: valves()[5].state() === 'on', off: valves()[5].state() === 'off' }, click: valveHandler.bind($data, valves()[5])"><div class="title">V06</div></div>
+        <div class="valve col2 row12 hValve valve07" data-bind="css: { on: valves()[6].state() === 'on', off: valves()[6].state() === 'off' }, click: valveHandler.bind($data, valves()[6])"><div class="title">V07</div></div>
+        <div class="valve col5 row12 hValve valve08" data-bind="css: { on: valves()[7].state() === 'on', off: valves()[7].state() === 'off' }, click: valveHandler.bind($data, valves()[7])"><div class="title">V08</div></div>
+        <div class="valve col12 row12 hValve valve09" data-bind="css: { on: valves()[8].state() === 'on', off: valves()[8].state() === 'off' }, click: valveHandler.bind($data, valves()[8])"><div class="title">V09</div></div>
+        <div class="valve col15 row12 hValve valve10" data-bind="css: { on: valves()[9].state() === 'on', off: valves()[9].state() === 'off' }, click: valveHandler.bind($data, valves()[9])"><div class="title">V10</div></div>
+        <div class="valve col14 row13 vValve valve11" data-bind="css: { on: valves()[10].state() === 'on', off: valves()[10].state() === 'off' }, click: valveHandler.bind($data, valves()[10])"><div class="title">V11</div></div>
 
-        <div class="port col4 row10 vPort port1" data-bind="css: { on: valves()[11].state(), off: !valves()[11].state() }"><div class="title">P1</div></div>
-        <div class="port col14 row10 vPort port2" data-bind="css: { on: valves()[12].state(), off: !valves()[12].state() }"><div class="title">P2</div></div>
+        <div class="port col4 row10 vPort port1" data-bind="css: { on: valves()[11].state() === 'on', off: valves()[11].state() === 'off' }, click: valveHandler.bind($data, valves()[11])"><div class="title">P1</div></div>
+        <div class="port col14 row10 vPort port2" data-bind="css: { on: valves()[12].state() === 'on', off: valves()[12].state() === 'off' }, click: valveHandler.bind($data, valves()[12])"><div class="title">P2</div></div>
 
 
         <div class="pipe hPipe col1 row2 vSpan1 pipeA"></div>

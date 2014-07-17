@@ -18,10 +18,10 @@ module.exports = function() {
     { id: "P2",  name: "Vatten, Vört", key: 13 }
   ];
   
-  function getIdFromKey(key) {
+  function getKeyFromId(id) {
     for (var n = 0; n < relays.length; n++) {
-      if (key === relays[n].key) {
-        return relays[n].id;
+      if (id === relays[n].id) {
+        return relays[n].key;
       }
     }
   };
@@ -64,15 +64,36 @@ module.exports = function() {
     }
   };
   
-  this.setValves = function(valves) {
+  this.getValves = function() {
+    var valves = [];
+    
     for (var n = 0; n < relays.length; n++) {
-      var id = getIdFromKey(relays[n].key);
+      try {
+        valves.push({ id: relays[n].id, state: phidget.getOutputState(relays[n].key) ? "on" : "off" });
+      } catch (e) {
+        valves.push({ id: relays[n].id, state: "" });
+        console.error(e);
+      }
+    }
+    console.log(valves);
+    return valves;
+  };
+  
+  this.setValves = function(valves) {
+    for (var n = 0; n < valves.length; n++) {
+      if (valves[n].state === "") {
+        continue;
+      }
       
-      var value = valves.indexOf(id) === -1 ? 0 : 1;
-      console.log("key", relays[n].key, "id", id, "value", value, valves);
+      var key = getKeyFromId(valves[n].id);
+      var value = valves[n].state === "on" ? 1 : 0;
+      
+      console.log("key", key, "id", valves[n].id, "value", value, valves);
       
       try {
-        phidget.setOutputState(relays[n].key, value);
+        if (phidget.getOutputState(key) !== value) {
+          phidget.setOutputState(key, value);
+        }
       } catch (e) {
         console.error(e);
       }

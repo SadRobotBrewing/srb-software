@@ -5,6 +5,7 @@
   width: 950px;
   margin-left: auto;
   margin-right: auto;
+  zoom: 0.8;
 }
 
 .scheme div {
@@ -40,6 +41,7 @@
   border: 1px solid #8F8F8F;
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 
 .scheme .hValve {
@@ -56,6 +58,7 @@
   border: 1px solid #8F8F8F;
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 
 .scheme .hPort {

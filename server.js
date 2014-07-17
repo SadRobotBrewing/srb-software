@@ -30,6 +30,19 @@ phidget.connect(function(error) {
 
 var programs = JSON.parse(fs.readFileSync('programs.json'));
 
+// TODO: Remove this when list is tri-state
+programs = programs.map(function(element) {
+  element.valves = element.valves.map(function(element) {
+    if (typeof element === "object") {
+      return element;
+    } else {
+      return { id: element, state: "on" };
+    }
+  });
+  
+  return element;
+});
+
 primus.on('connection', function(spark) {
   console.log("Client connected!");
 
@@ -85,6 +98,8 @@ primus.on('connection', function(spark) {
       console.log(data);
       phidget.setValves(data.data);
       done({ });
+    } else if (data.event === "getValves") {
+      done({ data: phidget.getValves() });
     } else {
       done(data);
     }
