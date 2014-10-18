@@ -1,11 +1,18 @@
 
+body { margin-top: 50px; }
+
+ul { padding-left: 0; }
+
+.timers {
+    position: fixed;
+    top: 110px;
+}
+
 .scheme {
-  position: relative;
-  height: 700px;
-  width: 950px;
-  margin-left: auto;
-  margin-right: auto;
-  zoom: 0.8;
+  position: fixed;
+  margin-left: 100px;
+  margin-right: 100px;
+  zoom: 0.7;
 }
 
 .scheme div {
@@ -41,7 +48,6 @@
   border: 1px solid #8F8F8F;
   width: 50px;
   height: 50px;
-  cursor: pointer;
 }
 
 .scheme .hValve {
@@ -58,7 +64,6 @@
   border: 1px solid #8F8F8F;
   width: 50px;
   height: 50px;
-  cursor: pointer;
 }
 
 .scheme .hPort {

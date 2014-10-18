@@ -1,0 +1,310 @@
+{
+    "parameters": [
+        "StepTemperature",
+        "InfusionTemperature"
+    ],
+    "steps": [
+        {
+            "name": "Fylla kallvatten",
+            "actions": [],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Värma",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "HLT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "KET1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "HLT1"
+                },
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "KET1"
+                },
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Mäska in",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V02", "V09", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "%StepTemperature",
+                    "input": "MLT1"
+                },
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "HERMS1",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "HLT1"
+                },
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V01", "V03", "V04", "V05", "V07", "V09", "P1", "P2" ]
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "55",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                }
+            ]
+        },
+        {
+            "name": "HERMS2",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "input": "HLT1"
+                },
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V04", "V07", "P1" ]
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "5",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                },
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Mäska ut",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V02", "V09", "P2" ]
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "input": "MLT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "input": "HLT1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "77",
+                    "input": "MLT1"
+                },
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "77",
+                    "input": "HLT1"
+                }
+            ]
+        },
+        {
+            "name": "Cirkulera Vört",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V01", "V03", "V04", "V05", "V07", "V09", "P1", "P2" ]
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "input": "HLT1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Vill du laka ur?",
+            "actions": [
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Har båda pumparna stängts av?",
+            "actions": [
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Laka ur",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V02", "V04", "V05", "V08", "V10", "P1", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Koka upp",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V02", "V04", "V05", "V08", "V10", "P1", "P2" ]
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "input": "KET1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "100",
+                    "input": "KET1"
+                },
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Koka",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "input": "KET1"
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "30",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "100",
+                    "input": "KET1"
+                },
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                },
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Slutkok",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "input": "KET1"
+                },
+                {
+                    "type": "SetTimer",
+                    "data": "60",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "100",
+                    "input": "KET1"
+                },
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                }
+            ]
+        },
+        {
+            "name": "Whirlpool",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V10", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        },
+        {
+            "name": "Kyl",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V11", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser"
+                }
+            ]
+        }
+    ]
+}

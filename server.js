@@ -1,33 +1,90 @@
-var Primus = require('primus');
-var PrimusResponder = require('primus-responder');
+
 var http = require('http');
 var express = require('express');
-var fs = require('fs');
-var Phidget = require("./phidget");
+var fs = require('q-io/fs');
+var path = require('path');
+var moment = require("moment");
+
+var io = require("./lib/io");
+var brew = require("./lib/brew");
+var webio = require("./lib/webio");
 
 var app = express();
 var server = http.createServer(app);
-var primus = new Primus(server);
+
 var port = process.env.PORT || 3000;
-var phidget = new Phidget();
 
+io.setup({})
+.then(function() {
+    return brew.setup(io);
+})
+.then(function() {
+    return webio.setup(server);
+})
+.then(function() {
+    app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/client'));
-primus.use('responder', PrimusResponder);
+    io.on("status", function(status) {
+        webio.emit("status", status);
+    });
 
-server.listen(port, function() {
-  console.log("Now listening on " + port);
+    brew.on("brew", function(brew) {
+        webio.emit("brew", brew);
+    });
+
+    webio.register("getProgramNames", function() {
+        return fs.list("./programs")
+        .then(function(files) {
+            return files.map(function(file) { return path.basename(file, ".json"); });
+        });
+    });
+
+    webio.register('getProgramParameters', function(programName) {
+        return fs.read(path.join("./programs", programName + ".json"))
+        .then(JSON.parse)
+        .then(function(program) {
+            return program.parameters;
+        });
+    });
+
+    webio.register('getBrew', function() {
+        return brew.get();
+    });
+
+    webio.register('getStatus', function() {
+        return io.getStatus();
+    });
+
+    webio.register('startBrew', function(options) {
+        return brew.start(options.name, options.description, options.programName, options.parameters);
+    });
+
+    webio.register('userOkay', function() {
+        return brew.userOkay();
+    });
+
+    server.listen(port, function() {
+        console.log("Now listening on " + port);
+    });
+})
+.catch(function(error) {
+    console.error(error);
+    process.exit(255);
 });
 
-phidget.connect(function(error) {
-  if (error) {
-    console.error("Could not connect to phidget board, error: " + error);
-    //process.exit(255);
-  }
-  
-  console.log('Connected to phidget board!');
-});
+/*
+var Phidget = require("./phidget");
+var phidget = new Phidget();*/
 
+    // phidget.connect(function(error) {
+    //     if (error) {
+    //         console.error("Could not connect to phidget board, error: " + error);
+    //         process.exit(255);
+    //     }
+// });
+
+
+/*
 var categories = JSON.parse(fs.readFileSync('categories.json'));
 var programs = JSON.parse(fs.readFileSync('programs.json'));
 
@@ -40,7 +97,7 @@ programs = programs.map(function(element) {
       return { id: element, state: "on" };
     }
   });
-  
+
   return element;
 });
 
@@ -109,4 +166,4 @@ primus.on('connection', function(spark) {
       done(data);
     }
   });
-});
+});*/

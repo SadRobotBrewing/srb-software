@@ -1,0 +1,65 @@
+<div class="container-fluid" data-bind="if: brew">
+    <div class="page-header">
+        <h1>Brewing <span data-bind="text: brew().name"></span> <small data-bind="text: brew().description"></small></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Step</th>
+                        <th>Actions</th>
+                        <th>Finish criteria</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: steps">
+                    <tr data-bind="css: { 'text-muted': $parent.brew().step > $index(), success: $parent.brew().step > $index(), active: $parent.brew().step === $index(), warning: $parent.brew().step < $index() }">
+                        <td data-bind="text: $index"></td>
+                        <td data-bind="text: name"></td>
+                        <td>
+                            <ul data-bind="foreach: actions">
+                                <li>
+                                    <!-- ko if: $data.type === 'SetTemperature' -->
+                                        Setting temperature of <span data-bind="text: $data.input"></span> to <span data-bind="text: $data.temperature"></span> degrees
+                                    <!-- /ko -->
+
+                                    <!-- ko if: $data.type === 'SetPins' -->
+                                        Activating <span data-bind="text: $data.outputs.join()"></span>
+                                    <!-- /ko -->
+
+                                    <!-- ko if: $data.type === 'SetTimer' -->
+                                        Setting <span data-bind="text: $data.timer"></span> to <span data-bind="text: $data.timeout"></span> minutes
+                                    <!-- /ko -->
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul data-bind="foreach: criteria">
+                                <li>
+                                    <!-- ko if: $data.type === 'AwaitUser' -->
+                                        <span data-bind="visible: !$parent.userConfirmed">
+                                            Awaiting user confirmation <button class="btn btn-success btn-xs" data-bind="click: $parents[1].userOkay, visible: $parents[1].brew().step === $parentContext.$index()">Okay</button>
+                                        </span>
+                                        <span data-bind="visible: $parent.userConfirmed">User has confirmed</span>
+                                    <!-- /ko -->
+
+                                    <!-- ko if: $data.type === 'AwaitTemperature' -->
+                                        <span data-bind="text: $data.input"></span> must be <span data-bind="text: $data.temperature"></span> degrees
+                                    <!-- /ko -->
+
+                                    <!-- ko if: $data.type === 'AwaitTimer' -->
+                                        <span data-bind="text: $data.timer"></span> must expire
+                                    <!-- /ko -->
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <status></status>
+        </div>
+    </div>
+</div>

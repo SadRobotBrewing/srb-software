@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>SRB</title>
+
+            <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <a class="navbar-brand" href="#">SRB</a>
+        </nav>
+
+        <new-brew-form data-bind="visible: !run.brew()"></new-brew-form>
+        <brew-run data-bind="visible: run.brew()"></brew-run>
+
+        <script src="node_modules/requirejs/require.js" data-main="main.js"></script>
+
+    </body>
+</html>

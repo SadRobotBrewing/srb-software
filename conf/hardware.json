@@ -1,0 +1,17 @@
+{
+    "V01": { "device": "phidget", "id": 0, "type": "output", "pin": 1 },
+    "V02": { "device": "phidget", "id": 0, "type": "output", "pin": 2 },
+    "V03": { "device": "phidget", "id": 0, "type": "output", "pin": 3 },
+    "V04": { "device": "phidget", "id": 0, "type": "output", "pin": 4 },
+    "V05": { "device": "phidget", "id": 0, "type": "output", "pin": 5 },
+    "V06": { "device": "phidget", "id": 0, "type": "output", "pin": 6 },
+    "V07": { "device": "phidget", "id": 0, "type": "output", "pin": 7 },
+    "V08": { "device": "phidget", "id": 0, "type": "output", "pin": 8 },
+    "V09": { "device": "phidget", "id": 0, "type": "output", "pin": 9 },
+    "V10": { "device": "phidget", "id": 0, "type": "output", "pin": 10 },
+    "V11": { "device": "phidget", "id": 0, "type": "output", "pin": 11 },
+    "P1":  { "device": "phidget", "id": 0, "type": "output", "pin": 12 },
+    "P2":  { "device": "phidget", "id": 0, "type": "output", "pin": 13 },
+
+    "TIM1": { "type": "timer" }
+}

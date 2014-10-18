@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Start a new brew <small>Setup the parameters for the new brew</small></h1>
+    </div>
+    <form class="form-horizontal" role="form" data-bind="submit: submit">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Name" data-bind="textInput: name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="10" placeholder="Description" data-bind="textInput: description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Program</label>
+            <div class="col-sm-10">
+                <select class="form-control" data-bind="options: programNames, value: programName"></select>
+            </div>
+        </div>
+        <div data-bind="foreach: parameters">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" data-bind="text: name"></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Parameter value" data-bind="textInput: value">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" data-bind="disable: disabled">Start</button>
+            </div>
+        </div>
+    </form>
+</div>

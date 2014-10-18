@@ -4,7 +4,7 @@ srb-software
 # Install node.js
 http://weworkweplay.com/play/raspberry-pi-nodejs/
 ```
-wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 sudo dpkg -i node_latest_armhf.deb
 ```
 
@@ -21,14 +21,11 @@ sudo make install
 ```
 
 # Install interface stuff
-https://github.com/mattiasrunge/srb-software
+https://github.com/SadRobotBrewing/srb-software
 ```
-git clone https://github.com/mattiasrunge/srb-software.github
+git clone https://github.com/SadRobotBrewing/srb-software.github
 cd srb-software
 npm install
-cd client 
-../node_modules/bower/bin/bower install
-
 ```
 
 # Start the system
