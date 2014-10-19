@@ -20,6 +20,12 @@ define([
             P2: ko.observable(false)
         };
 
+        this.temperatures = {
+            HLT1: ko.observable(0),
+            MLT1: ko.observable(0),
+            KET1: ko.observable(0)
+        };
+
         this.timers = ko.observableArray();
 
         this.setStatus = function(status) {
@@ -27,6 +33,10 @@ define([
 
             for (var name in status.outputs) {
                 this.valves[name](status.outputs[name]);
+            }
+
+            for (var name in status.temperatures) {
+                this.temperatures[name](status.temperatures[name]);
             }
 
             var timers = [];

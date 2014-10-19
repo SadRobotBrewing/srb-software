@@ -34,6 +34,18 @@ ul { padding-left: 0; }
   text-shadow: 1px 1px 1px black;
 }
 
+.scheme .tank .temperature {
+    position: relative;
+    padding: 10px;
+    padding-top: 65px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 1px 1px 1px black;
+    z-index: 2;
+}
+
 
 .scheme .on {
   background-color: #5CB85C;

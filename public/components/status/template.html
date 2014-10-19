@@ -1,8 +1,17 @@
 <div>
     <div class="scheme">
-        <div class="tank col2 row1 vSpan4 hSpan5" style="background-color: #4F81BD;"><div class="title">HLT</div></div>
-        <div class="tank col9 row1 vSpan4 hSpan5" style="background-color: #9BBB59;"><div class="title">MLT</div></div>
-        <div class="tank col15 row1 vSpan4 hSpan5" style="background-color: #F89646;"><div class="title">KET</div></div>
+        <div class="tank col2 row1 vSpan4 hSpan5" style="background-color: #4F81BD;">
+            <div class="title">HLT</div>
+            <div class="temperature"><span data-bind="text: temperatures.HLT1"></span>&deg;</div>
+        </div>
+        <div class="tank col9 row1 vSpan4 hSpan5" style="background-color: #9BBB59;">
+            <div class="title">MLT</div>
+            <div class="temperature"><span data-bind="text: temperatures.MLT1"></span>&deg;</div>
+        </div>
+        <div class="tank col15 row1 vSpan4 hSpan5" style="background-color: #F89646;">
+            <div class="title">KET</div>
+            <div class="temperature"><span data-bind="text: temperatures.KET1"></span>&deg;</div>
+        </div>
         <div class="tank col13 row7 vSpan2 hSpan2" style="background-color: #4BACC7;"><div class="title">ACK</div></div>
 
         <div class="valve col6 row2 hValve valve01" data-bind="css: { on: valves.V01(), off: !valves.V01() }"><div class="title">V01</div></div>

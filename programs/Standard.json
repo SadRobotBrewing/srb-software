@@ -262,7 +262,7 @@
                 },
                 {
                     "type": "SetTimer",
-                    "data": "60",
+                    "timeout": "60",
                     "timer": "TIM1"
                 }
             ],
