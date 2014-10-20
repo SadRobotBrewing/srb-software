@@ -76,7 +76,8 @@
                 },
                 {
                     "type": "SetTimer",
-                    "timeout": "55",
+                    "timeout": "1",
+                    "timeoutReal": "55",
                     "timer": "TIM1"
                 }
             ],

@@ -20,16 +20,16 @@
                         <td>
                             <ul data-bind="foreach: actions">
                                 <li>
-                                    <!-- ko if: $data.type === 'SetTemperature' -->
-                                        Setting temperature of <span data-bind="text: $data.input"></span> to <span data-bind="text: $data.temperature"></span> degrees
+                                    <!-- ko if: type === 'SetTemperature' -->
+                                        Setting temperature of <span data-bind="text: input"></span> to <span data-bind="text: temperature"></span> degrees
                                     <!-- /ko -->
 
-                                    <!-- ko if: $data.type === 'SetPins' -->
-                                        Activating <span data-bind="text: $data.outputs.join()"></span>
+                                    <!-- ko if: type === 'SetPins' -->
+                                        Activating <span data-bind="text: outputs.join()"></span>
                                     <!-- /ko -->
 
-                                    <!-- ko if: $data.type === 'SetTimer' -->
-                                        Setting <span data-bind="text: $data.timer"></span> to <span data-bind="text: $data.timeout"></span> minutes
+                                    <!-- ko if: type === 'SetTimer' -->
+                                        Setting <span data-bind="text: timer"></span> to <span data-bind="text: timeout"></span> minutes
                                     <!-- /ko -->
                                 </li>
                             </ul>
@@ -37,19 +37,31 @@
                         <td>
                             <ul data-bind="foreach: criteria">
                                 <li>
-                                    <!-- ko if: $data.type === 'AwaitUser' -->
-                                        <span data-bind="visible: !$parent.userConfirmed">
+                                    <!-- ko if: type === 'AwaitUser' -->
+                                        <span data-bind="visible: !$data.fullfilled">
                                             Awaiting user confirmation <button class="btn btn-success btn-xs" data-bind="click: $parents[1].userOkay, visible: $parents[1].brew().step === $parentContext.$index()">Okay</button>
                                         </span>
-                                        <span data-bind="visible: $parent.userConfirmed">User has confirmed</span>
+                                        <span data-bind="visible: $data.fullfilled">
+                                            User has confirmed
+                                        </span>
                                     <!-- /ko -->
 
-                                    <!-- ko if: $data.type === 'AwaitTemperature' -->
-                                        <span data-bind="text: $data.input"></span> must be <span data-bind="text: $data.temperature"></span> degrees
+                                    <!-- ko if: type === 'AwaitTemperature' -->
+                                        <span data-bind="visible: !$data.fullfilled">
+                                            <span data-bind="text: input"></span> must be <span data-bind="text: temperature"></span> degrees
+                                        </span>
+                                        <span data-bind="visible: $data.fullfilled">
+                                            <span data-bind="text: input"></span> has reached <span data-bind="text: temperature"></span> degrees
+                                        </span>
                                     <!-- /ko -->
 
-                                    <!-- ko if: $data.type === 'AwaitTimer' -->
-                                        <span data-bind="text: $data.timer"></span> must expire
+                                    <!-- ko if: type === 'AwaitTimer' -->
+                                        <span data-bind="visible: !$data.fullfilled">
+                                            <span data-bind="text: timer"></span> must expire
+                                        </span>
+                                        <span data-bind="visible: $data.fullfilled">
+                                            <span data-bind="text: timer"></span> has expired
+                                        </span>
                                     <!-- /ko -->
                                 </li>
                             </ul>

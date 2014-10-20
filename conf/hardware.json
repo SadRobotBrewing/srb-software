@@ -13,8 +13,8 @@
     "P1":  { "type": "output", "serial": 127584, "pin": 12 },
     "P2":  { "type": "output", "serial": 127584, "pin": 13 },
 
-    "HLT1":  { "type": "temperature", "serial": 343420, "input": 2 },
-    "MLT1":  { "type": "temperature", "serial": 343420, "input": 2 },
+    "HLT1":  { "type": "temperature", "serial": 343420, "input": 0 },
+    "MLT1":  { "type": "temperature", "serial": 343420, "input": 1 },
     "KET1":  { "type": "temperature", "serial": 343420, "input": 2 },
 
     "TIM1": { "type": "timer" }
