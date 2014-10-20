@@ -2,32 +2,34 @@
     <div class="scheme">
         <div class="tank col2 row1 vSpan4 hSpan5" style="background-color: #4F81BD;">
             <div class="title">HLT</div>
-            <div class="temperature"><span data-bind="text: temperatures.HLT1"></span>&deg;</div>
+            <div class="temperature"><span data-bind="text: temperatures.HLTPT1"></span>&deg;</div>
+            <div class="heating" data-bind="visible: outputs.HLT3P">Heating...</div>
         </div>
         <div class="tank col9 row1 vSpan4 hSpan5" style="background-color: #9BBB59;">
             <div class="title">MLT</div>
-            <div class="temperature"><span data-bind="text: temperatures.MLT1"></span>&deg;</div>
+            <div class="temperature"><span data-bind="text: temperatures.MLTPT1"></span>&deg;</div>
         </div>
         <div class="tank col15 row1 vSpan4 hSpan5" style="background-color: #F89646;">
             <div class="title">KET</div>
-            <div class="temperature"><span data-bind="text: temperatures.KET1"></span>&deg;</div>
+            <div class="temperature"><span data-bind="text: temperatures.KETPT1"></span>&deg;</div>
+            <div class="heating" data-bind="visible: outputs.KET3P1() || outputs.KET3P2()">Heating...</div>
         </div>
         <div class="tank col13 row7 vSpan2 hSpan2" style="background-color: #4BACC7;"><div class="title">ACK</div></div>
 
-        <div class="valve col6 row2 hValve valve01" data-bind="css: { on: valves.V01(), off: !valves.V01() }"><div class="title">V01</div></div>
-        <div class="valve col8 row3 vValve valve02" data-bind="css: { on: valves.V02(), off: !valves.V02() }"><div class="title">V02</div></div>
-        <div class="valve col6 row5 hValve valve03" data-bind="css: { on: valves.V03(), off: !valves.V03() }"><div class="title">V03</div></div>
-        <div class="valve col4 row6 vValve valve04" data-bind="css: { on: valves.V04(), off: !valves.V04() }"><div class="title">V04</div></div>
-        <div class="valve col11 row6 vValve valve05" data-bind="css: { on: valves.V05(), off: !valves.V05() }"><div class="title">V05</div></div>
-        <div class="valve col17 row6 vValve valve06" data-bind="css: { on: valves.V06(), off: !valves.V06() }"><div class="title">V06</div></div>
-        <div class="valve col2 row12 hValve valve07" data-bind="css: { on: valves.V07(), off: !valves.V07() }"><div class="title">V07</div></div>
-        <div class="valve col5 row12 hValve valve08" data-bind="css: { on: valves.V08(), off: !valves.V08() }"><div class="title">V08</div></div>
-        <div class="valve col12 row12 hValve valve09" data-bind="css: { on: valves.V09(), off: !valves.V09() }"><div class="title">V09</div></div>
-        <div class="valve col15 row12 hValve valve10" data-bind="css: { on: valves.V10(), off: !valves.V10() }"><div class="title">V10</div></div>
-        <div class="valve col14 row13 vValve valve11" data-bind="css: { on: valves.V11(), off: !valves.V11() }"><div class="title">V11</div></div>
+        <div class="valve col6 row2 hValve valve01" data-bind="css: { on: outputs.V01(), off: !outputs.V01() }"><div class="title">V01</div></div>
+        <div class="valve col8 row3 vValve valve02" data-bind="css: { on: outputs.V02(), off: !outputs.V02() }"><div class="title">V02</div></div>
+        <div class="valve col6 row5 hValve valve03" data-bind="css: { on: outputs.V03(), off: !outputs.V03() }"><div class="title">V03</div></div>
+        <div class="valve col4 row6 vValve valve04" data-bind="css: { on: outputs.V04(), off: !outputs.V04() }"><div class="title">V04</div></div>
+        <div class="valve col11 row6 vValve valve05" data-bind="css: { on: outputs.V05(), off: !outputs.V05() }"><div class="title">V05</div></div>
+        <div class="valve col17 row6 vValve valve06" data-bind="css: { on: outputs.V06(), off: !outputs.V06() }"><div class="title">V06</div></div>
+        <div class="valve col2 row12 hValve valve07" data-bind="css: { on: outputs.V07(), off: !outputs.V07() }"><div class="title">V07</div></div>
+        <div class="valve col5 row12 hValve valve08" data-bind="css: { on: outputs.V08(), off: !outputs.V08() }"><div class="title">V08</div></div>
+        <div class="valve col12 row12 hValve valve09" data-bind="css: { on: outputs.V09(), off: !outputs.V09() }"><div class="title">V09</div></div>
+        <div class="valve col15 row12 hValve valve10" data-bind="css: { on: outputs.V10(), off: !outputs.V10() }"><div class="title">V10</div></div>
+        <div class="valve col14 row13 vValve valve11" data-bind="css: { on: outputs.V11(), off: !outputs.V11() }"><div class="title">V11</div></div>
 
-        <div class="port col4 row10 vPort port1" data-bind="css: { on: valves.P1(), off: !valves.P1() }"><div class="title">P1</div></div>
-        <div class="port col14 row10 vPort port2" data-bind="css: { on: valves.P2(), off: !valves.P2() }"><div class="title">P2</div></div>
+        <div class="port col4 row10 vPort port1" data-bind="css: { on: outputs.P1(), off: !outputs.P1() }"><div class="title">P1</div></div>
+        <div class="port col14 row10 vPort port2" data-bind="css: { on: outputs.P2(), off: !outputs.P2() }"><div class="title">P2</div></div>
 
 
         <div class="pipe hPipe col1 row2 vSpan1 pipeA"></div>
@@ -80,9 +82,10 @@
     </div>
     <div class="timers">
         <div data-bind="foreach: timers">
-            <span>
-                <span data-bind="text: name"></span>: <span data-bind="text: left"></span>
-            </span>
+            <div class="digits">
+                <div class="name" data-bind="text: name"></div>
+                <div class="time" data-bind="timer: left"></div>
+            </div>
         </div>
     </div>
 </div

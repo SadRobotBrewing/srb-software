@@ -59,8 +59,8 @@ io.setup({})
         return brew.start(options.name, options.description, options.programName, options.parameters);
     });
 
-    webio.register('userOkay', function() {
-        return brew.userOkay();
+    webio.register('userOkay', function(criteriaIndex) {
+        return brew.userOkay(criteriaIndex);
     });
 
     server.listen(port, function() {

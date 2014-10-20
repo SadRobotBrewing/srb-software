@@ -9,7 +9,8 @@
             "actions": [],
             "criteria": [
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Är vattnet påfyllt?"
                 }
             ]
         },
@@ -19,33 +20,48 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "%InfusionTemperature",
-                    "input": "HLT1"
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
                 },
                 {
                     "type": "SetTemperature",
                     "temperature": "%InfusionTemperature",
-                    "input": "KET1"
+                    "output": "KET3P1",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "output": "KET3P2",
+                    "input": "KETPT1"
                 }
             ],
             "criteria": [
                 {
                     "type": "AwaitTemperature",
                     "temperature": "%InfusionTemperature",
-                    "input": "HLT1"
+                    "input": "HLTPT1"
                 },
                 {
                     "type": "AwaitTemperature",
                     "temperature": "%InfusionTemperature",
-                    "input": "KET1"
+                    "input": "KETPT1"
                 },
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Kan vi börja mäska in?"
                 }
             ]
         },
         {
             "name": "Mäska in",
             "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                },
                 {
                     "type": "SetPins",
                     "outputs": [ "V06", "V02", "V09", "P2" ]
@@ -55,10 +71,11 @@
                 {
                     "type": "AwaitTemperature",
                     "temperature": "%StepTemperature",
-                    "input": "MLT1"
+                    "input": "MLTPT1"
                 },
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Kan vi börja HERMS?"
                 }
             ]
         },
@@ -68,7 +85,8 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "%InfusionTemperature",
-                    "input": "HLT1"
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
                 },
                 {
                     "type": "SetPins",
@@ -76,8 +94,7 @@
                 },
                 {
                     "type": "SetTimer",
-                    "timeout": "1",
-                    "timeoutReal": "55",
+                    "timeout": "55",
                     "timer": "TIM1"
                 }
             ],
@@ -94,7 +111,8 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "77",
-                    "input": "HLT1"
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
                 },
                 {
                     "type": "SetPins",
@@ -112,7 +130,8 @@
                     "timer": "TIM1"
                 },
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Kan vi mäska ut?"
                 }
             ]
         },
@@ -126,24 +145,24 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "77",
-                    "input": "MLT1"
-                },
-                {
-                    "type": "SetTemperature",
-                    "temperature": "77",
-                    "input": "HLT1"
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
                 }
             ],
             "criteria": [
                 {
                     "type": "AwaitTemperature",
-                    "temperature": "77",
-                    "input": "MLT1"
+                    "temperature": "74",
+                    "input": "MLTPT1"
                 },
                 {
                     "type": "AwaitTemperature",
-                    "temperature": "77",
-                    "input": "HLT1"
+                    "temperature": "74",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Kan vi börja cirkulera vört?"
                 }
             ]
         },
@@ -157,32 +176,18 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "77",
-                    "input": "HLT1"
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
                 }
             ],
             "criteria": [
                 {
-                    "type": "AwaitUser"
-                }
-            ]
-        },
-        {
-            "name": "Vill du laka ur?",
-            "actions": [
-            ],
-            "criteria": [
+                    "type": "AwaitUser",
+                    "question": "Har båda pumparna stängts av?"
+                },
                 {
-                    "type": "AwaitUser"
-                }
-            ]
-        },
-        {
-            "name": "Har båda pumparna stängts av?",
-            "actions": [
-            ],
-            "criteria": [
-                {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Vill du laka ur?"
                 }
             ]
         },
@@ -196,7 +201,8 @@
             ],
             "criteria": [
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Vill du börja koka?"
                 }
             ]
         },
@@ -210,17 +216,25 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "100",
-                    "input": "KET1"
+                    "output": "KET3P1",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "output": "KET3P2",
+                    "input": "KETPT1"
                 }
             ],
             "criteria": [
                 {
                     "type": "AwaitTemperature",
                     "temperature": "100",
-                    "input": "KET1"
+                    "input": "KETPT1"
                 },
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Vill du koka mer?"
                 }
             ]
         },
@@ -230,7 +244,8 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "100",
-                    "input": "KET1"
+                    "output": "KET3P2",
+                    "input": "KETPT1"
                 },
                 {
                     "type": "SetTimer",
@@ -240,16 +255,12 @@
             ],
             "criteria": [
                 {
-                    "type": "AwaitTemperature",
-                    "temperature": "100",
-                    "input": "KET1"
-                },
-                {
                     "type": "AwaitTimer",
                     "timer": "TIM1"
                 },
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Vill du börja med slutkoket?"
                 }
             ]
         },
@@ -259,7 +270,8 @@
                 {
                     "type": "SetTemperature",
                     "temperature": "100",
-                    "input": "KET1"
+                    "output": "KET3P2",
+                    "input": "KETPT1"
                 },
                 {
                     "type": "SetTimer",
@@ -268,11 +280,6 @@
                 }
             ],
             "criteria": [
-                {
-                    "type": "AwaitTemperature",
-                    "temperature": "100",
-                    "input": "KET1"
-                },
                 {
                     "type": "AwaitTimer",
                     "timer": "TIM1"
@@ -289,7 +296,8 @@
             ],
             "criteria": [
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Vill du börja kyla?"
                 }
             ]
         },
@@ -303,7 +311,8 @@
             ],
             "criteria": [
                 {
-                    "type": "AwaitUser"
+                    "type": "AwaitUser",
+                    "question": "Vill du avsluta bryggningen?"
                 }
             ]
         }

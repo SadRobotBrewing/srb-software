@@ -12,10 +12,15 @@
     "V11": { "type": "output", "serial": 127584, "pin": 11 },
     "P1":  { "type": "output", "serial": 127584, "pin": 12 },
     "P2":  { "type": "output", "serial": 127584, "pin": 13 },
+    "P2":  { "type": "output", "serial": 127584, "pin": 13 },
 
-    "HLT1":  { "type": "temperature", "serial": 343420, "input": 0 },
-    "MLT1":  { "type": "temperature", "serial": 343420, "input": 1 },
-    "KET1":  { "type": "temperature", "serial": 343420, "input": 2 },
+    "HLT3P":  { "type": "output", "serial": 127584, "pin": 0 },
+    "KET3P1":  { "type": "output", "serial": 127584, "pin": 14 },
+    "KET3P2":  { "type": "output", "serial": 127584, "pin": 15 },
+
+    "HLTPT1":  { "type": "temperature", "serial": 343420, "input": 0, "a": 3.679, "b": 1499.855 },
+    "MLTPT1":  { "type": "temperature", "serial": 343420, "input": 1, "a": 3.679, "b": 1499.855 },
+    "KETPT1":  { "type": "temperature", "serial": 343420, "input": 2, "a": 3.679, "b": 1499.855 },
 
     "TIM1": { "type": "timer" }
 }

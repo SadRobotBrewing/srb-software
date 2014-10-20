@@ -1,6 +1,6 @@
 <div class="container-fluid" data-bind="if: brew">
     <div class="page-header">
-        <h1>Brewing <span data-bind="text: brew().name"></span> <small data-bind="text: brew().description"></small></h1>
+        <h1>Brewing <span data-bind="text: brew().name"></span></h1>
     </div>
     <div class="row">
         <div class="col-md-7">
@@ -14,22 +14,22 @@
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: steps">
-                    <tr data-bind="css: { 'text-muted': $parent.brew().step > $index(), success: $parent.brew().step > $index(), active: $parent.brew().step === $index(), warning: $parent.brew().step < $index() }">
-                        <td data-bind="text: $index"></td>
-                        <td data-bind="text: name"></td>
+                    <tr data-bind="css: { 'text-muted': $parent.brew().step > $index(), success: $parent.brew().step > $index(), info: $parent.brew().step === $index(), warning: $parent.brew().step < $index() }">
+                        <td data-bind="text: $index, style: { 'font-weight': $parent.brew().step === $index() ? 'bold' : 'normal' }"></td>
+                        <td data-bind="text: name, style: { 'font-weight': $parent.brew().step === $index() ? 'bold' : 'normal' }"></td>
                         <td>
                             <ul data-bind="foreach: actions">
                                 <li>
                                     <!-- ko if: type === 'SetTemperature' -->
-                                        Setting temperature of <span data-bind="text: input"></span> to <span data-bind="text: temperature"></span> degrees
+                                        Setting temperature of <strong data-bind="text: input"></strong> to <strong data-bind="text: temperature"></strong>&deg;
                                     <!-- /ko -->
 
                                     <!-- ko if: type === 'SetPins' -->
-                                        Activating <span data-bind="text: outputs.join()"></span>
+                                        Activating <span data-bind="outputList: outputs"></span>
                                     <!-- /ko -->
 
                                     <!-- ko if: type === 'SetTimer' -->
-                                        Setting <span data-bind="text: timer"></span> to <span data-bind="text: timeout"></span> minutes
+                                        Setting <strong data-bind="text: timer"></strong> to <strong data-bind="text: timeout"></strong> minutes
                                     <!-- /ko -->
                                 </li>
                             </ul>
@@ -39,7 +39,8 @@
                                 <li>
                                     <!-- ko if: type === 'AwaitUser' -->
                                         <span data-bind="visible: !$data.fullfilled">
-                                            Awaiting user confirmation <button class="btn btn-success btn-xs" data-bind="click: $parents[1].userOkay, visible: $parents[1].brew().step === $parentContext.$index()">Okay</button>
+                                            <strong data-bind="text: $data.question"></strong>
+                                            <button class="btn btn-success btn-xs" data-bind="click: $parents[1].userOkay.bind($data, $index()), visible: $parents[1].brew().step === $parentContext.$index()">Yes</button>
                                         </span>
                                         <span data-bind="visible: $data.fullfilled">
                                             User has confirmed
@@ -48,19 +49,19 @@
 
                                     <!-- ko if: type === 'AwaitTemperature' -->
                                         <span data-bind="visible: !$data.fullfilled">
-                                            <span data-bind="text: input"></span> must be <span data-bind="text: temperature"></span> degrees
+                                            <strong data-bind="text: input"></strong> must be <strong data-bind="text: temperature"></strong>&deg;
                                         </span>
                                         <span data-bind="visible: $data.fullfilled">
-                                            <span data-bind="text: input"></span> has reached <span data-bind="text: temperature"></span> degrees
+                                            <strong data-bind="text: input"></strong> has reached <strong data-bind="text: temperature"></strong>&deg;
                                         </span>
                                     <!-- /ko -->
 
                                     <!-- ko if: type === 'AwaitTimer' -->
                                         <span data-bind="visible: !$data.fullfilled">
-                                            <span data-bind="text: timer"></span> must expire
+                                            <strong data-bind="text: timer"></strong> must expire
                                         </span>
                                         <span data-bind="visible: $data.fullfilled">
-                                            <span data-bind="text: timer"></span> has expired
+                                            <strong data-bind="text: timer"></strong> has expired
                                         </span>
                                     <!-- /ko -->
                                 </li>
@@ -69,6 +70,9 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h2>Description</h2>
+            <p data-bind="text: brew().description"></p>
         </div>
         <div class="col-md-5">
             <status></status>

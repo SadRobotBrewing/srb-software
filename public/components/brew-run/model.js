@@ -9,8 +9,8 @@ define([
         this.brew = run.brew;
         this.steps = run.steps;
 
-        this.userOkay = function() {
-            socket.emit("userOkay", {}, function(error) {
+        this.userOkay = function(criteriaIndex) {
+            socket.emit("userOkay", criteriaIndex, function(error) {
                 if (error) {
                     console.error(error);
                     return;
