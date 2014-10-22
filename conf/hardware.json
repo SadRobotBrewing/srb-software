@@ -18,9 +18,13 @@
     "KET3P1":  { "type": "output", "serial": 127584, "pin": 14 },
     "KET3P2":  { "type": "output", "serial": 127584, "pin": 15 },
 
-    "HLTPT1":  { "type": "temperature", "serial": 343420, "input": 0, "a": 3.679, "b": 1499.855 },
-    "MLTPT1":  { "type": "temperature", "serial": 343420, "input": 1, "a": 3.679, "b": 1499.855 },
+    "HLTPT1":  { "type": "temperature", "serial": 343420, "input": 0, "a": 3.679, "b": 1499.855, "fixed": 35 },
+    "MLTPT1":  { "type": "temperature", "serial": 343420, "input": 1, "a": 3.679, "b": 1499.855, "fixed": 35 },
     "KETPT1":  { "type": "temperature", "serial": 343420, "input": 2, "a": 3.679, "b": 1499.855 },
 
-    "TIM1": { "type": "timer" }
+    "TIM1": { "type": "timer" },
+
+    "HLTPID3P": { "type": "regulator", "kp": 25, "ki": 1000, "kd": 9 },
+    "KETPID3P1": { "type": "regulator", "kp": 25, "ki": 1000, "kd": 9 },
+    "KETPID3P2": { "type": "regulator", "kp": 25, "ki": 1000, "kd": 9 }
 }

@@ -20,7 +20,8 @@
         "moment": "2.8.3",
         "achain.js": "0.0.8",
         "q": "1.0.1",
-        "q-io": "1.11.5"
+        "q-io": "1.11.5",
+        "liquid-pid": "0.0.3"
     },
     "scripts": {
         "install": "cd public && npm install"
