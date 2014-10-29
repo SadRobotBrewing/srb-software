@@ -33,6 +33,8 @@ ul { padding-left: 0; }
   position: relative;
   margin-left: 100px;
   margin-right: 100px;
+  zoom: 0.7;
+  height: 400px;
 }
 
 .scheme div {
