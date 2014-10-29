@@ -1,0 +1,332 @@
+{
+    "parameters": [
+        "StepTemperature",
+        "InfusionTemperature"
+    ],
+    "steps": [
+        {
+            "name": "Fylla kallvatten",
+            "actions": [],
+            "criteria": [
+                {
+                    "type": "AwaitUser",
+                    "question": "Är vattnet påfyllt?"
+                }
+            ]
+        },
+        {
+            "name": "Värma",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "regulator": "HLTPID3P",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "regulator": "KETPID3P1",
+                    "output": "KET3P1",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "regulator": "KETPID3P2",
+                    "output": "KET3P2",
+                    "input": "KETPT1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Kan vi börja mäska in?"
+                }
+            ]
+        },
+        {
+            "name": "Mäska in",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "regulator": "HLTPID3P",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V02", "V09", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "%StepTemperature",
+                    "input": "MLTPT1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Kan vi börja HERMS?"
+                }
+            ]
+        },
+        {
+            "name": "HERMS1",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "%InfusionTemperature",
+                    "regulator": "HLTPID3P",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V01", "V03", "V04", "V05", "V07", "V09", "P1", "P2" ]
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "1",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                }
+            ]
+        },
+        {
+            "name": "HERMS2",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "regulator": "HLTPID3P",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V04", "V07", "P1" ]
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "1",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Kan vi mäska ut?"
+                }
+            ]
+        },
+        {
+            "name": "Mäska ut",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V02", "V09", "P2" ]
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "regulator": "HLTPID3P",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "74",
+                    "input": "MLTPT1"
+                },
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "74",
+                    "input": "HLTPT1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Kan vi börja cirkulera vört?"
+                }
+            ]
+        },
+        {
+            "name": "Cirkulera Vört",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V01", "V03", "V04", "V05", "V07", "V09", "P1", "P2" ]
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "77",
+                    "regulator": "HLTPID3P",
+                    "output": "HLT3P",
+                    "input": "HLTPT1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser",
+                    "question": "Har båda pumparna stängts av?"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Vill du laka ur?"
+                }
+            ]
+        },
+        {
+            "name": "Laka ur",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V02", "V04", "V05", "V08", "V10", "P1", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser",
+                    "question": "Vill du börja koka?"
+                }
+            ]
+        },
+        {
+            "name": "Koka upp",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V02", "V04", "V05", "V08", "V10", "P1", "P2" ]
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "regulator": "KETPID3P1",
+                    "output": "KET3P1",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "regulator": "KETPID3P2",
+                    "output": "KET3P2",
+                    "input": "KETPT1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTemperature",
+                    "temperature": "100",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Vill du koka mer?"
+                }
+            ]
+        },
+        {
+            "name": "Koka",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "regulator": "KETPID3P2",
+                    "output": "KET3P2",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "1",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                },
+                {
+                    "type": "AwaitUser",
+                    "question": "Vill du börja med slutkoket?"
+                }
+            ]
+        },
+        {
+            "name": "Slutkok",
+            "actions": [
+                {
+                    "type": "SetTemperature",
+                    "temperature": "100",
+                    "regulator": "KETPID3P2",
+                    "output": "KET3P2",
+                    "input": "KETPT1"
+                },
+                {
+                    "type": "SetTimer",
+                    "timeout": "1",
+                    "timer": "TIM1"
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitTimer",
+                    "timer": "TIM1"
+                }
+            ]
+        },
+        {
+            "name": "Whirlpool",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V10", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser",
+                    "question": "Vill du börja kyla?"
+                }
+            ]
+        },
+        {
+            "name": "Kyl",
+            "actions": [
+                {
+                    "type": "SetPins",
+                    "outputs": [ "V06", "V11", "P2" ]
+                }
+            ],
+            "criteria": [
+                {
+                    "type": "AwaitUser",
+                    "question": "Vill du avsluta bryggningen?"
+                }
+            ]
+        }
+    ]
+}
